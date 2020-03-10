@@ -38,14 +38,9 @@ class MessageSent implements ShouldBroadcast
     {
        return new Channel('public');
     }
-    public function broadcastAs()
-    {
-        return 'NewModel';
-    }
+
     public function broadcastWith()
     {
-        return [
-            'view' => view('welcome', ['i' => $this->message])->render()
-        ];
+        return ['message' => $this->message, 'user' => $this->user];
     }
 }

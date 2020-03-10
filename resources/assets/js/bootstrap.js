@@ -55,7 +55,6 @@ window.Echo = new Echo({
     host: 'http://127.0.0.1:6001',
     client: window.io,
 });
-
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key',

@@ -22,19 +22,18 @@
         methods: {
             postMessage() {
                 axios.post('/post', {message: this.text}).then(({data}) => {
-                    this.messages.push(data);
+                    this.messages.push(data + ' - me');
                     this.text = '';
                 });
             }
         },
         created() {
-
             axios.get('/getAll').then(({data}) => {
                 this.messages = data
              });
              Echo.channel('public').
-                                 listen('MessageSent', ({message}) => {
-                                 this.messages.push(message);
+                                 listen('MessageSent', (data) => {
+                                 this.messages.push(data.message + ' - ' + data.user);
              });
          }
     }
